@@ -1,17 +1,15 @@
-const form = document.querySelector('#searchForm');                                 // Locating the form input in HTML
+// Locating the form input in HTML
+const form = document.querySelector('#searchForm');                                 
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
-    const searchTerm = form.elements.query.value;                                   // Saving input in constant
 
-    // const res = await fetch(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)  // Using STL in URL to fetch the promise
-    // .then(res => res.json())                                                        // Parsing the JSON received to a Javascript Object
-    // .catch(()=> console.log("Erro"));                                               // Error message if promissed is not resolved
+    // Saving input in constant
+    const searchTerm = form.elements.query.value;                                   
 
     makeSearch(searchTerm);
-
-    form.elements.query.value = '';                                                 // Resetting HTML form value to blank;
-    
+    // Resetting HTML form value to blank;
+    form.elements.query.value = '';                                                 
 });
 
 const makeImages = (shows) => {
