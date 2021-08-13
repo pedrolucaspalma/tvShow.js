@@ -14,7 +14,9 @@ form.addEventListener('submit', async function(e){
     const img = document.createElement('IMG');
     img.src = res[0].show.image.medium;
 
-    
+    document.body.append(img);
+
+
     // console.log(res[0])
 
     // setTimeout( () => console.log(response), 5000);
