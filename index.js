@@ -22,13 +22,12 @@ const makeImages = (shows) => {
 
 const makeSearch = async function (searchTerm) {
     const res = await fetch(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    
-    // Parsing the JSON received to a Javascript Object
-    .then(res => res.json())
+            // Parsing the JSON received to a Javascript Object
+            .then(res => res.json())
         
-    // Error message if promissed is not resolved                                              
-    .catch(()=> console.log("Erro"));
-    
+            // Error message if promissed is not resolved                                              
+            .catch(()=> console.log("Erro"));
+            result[0].show.image.medium;
     makeImages(res);
 }
 
