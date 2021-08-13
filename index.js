@@ -1,25 +1,25 @@
-//Getting user input from form
-const form = document.querySelector('#searchForm');
+const form = document.querySelector('#searchForm');                                 // Locating the form input in HTML
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
-    const searchTerm = form.elements.query.value;
+    const searchTerm = form.elements.query.value;                                   // Saving input in constant
 
-    const res = await fetch(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
-    .then(res => res.json())
-    .catch(()=> console.log("Erro"));
+    const res = await fetch(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)  // Using STL in URL to fetch the promise
+    .then(res => res.json())                                                        // Parsing the JSON received to a Javascript Object
+    .catch(()=> console.log("Erro"));                                               // Error message if promissed is not resolved
 
-    // console.log(res[0].show.image.medium)
-
-    const img = document.createElement('IMG');
-    img.src = res[0].show.image.medium;
-
-    document.body.append(img);
-
-
-    // console.log(res[0])
-
-    // setTimeout( () => console.log(response), 5000);
+    makeImages(res);                                                                // Calling makeImages();
+    form.elements.query.value = '';                                                 // Resetting HTML form value to blank;
     
 });
+
+const makeImages = (shows) => {
+    for(let result of shows){
+        if(result.show.image){
+            const img = document.createElement('IMG');
+            img.src = result.show.image.medium;
+            document.body.append(img);
+        }
+    }
+}
 
